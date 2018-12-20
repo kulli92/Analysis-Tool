@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Object Formatter", "Object Formatter\Object Formatter.csproj", "{793CDF9D-8C48-4AC9-B10C-ADE53D526BAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{793CDF9D-8C48-4AC9-B10C-ADE53D526BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793CDF9D-8C48-4AC9-B10C-ADE53D526BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793CDF9D-8C48-4AC9-B10C-ADE53D526BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793CDF9D-8C48-4AC9-B10C-ADE53D526BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F1C9236-9DBF-48A2-BDF1-DEDA0B798CA9}
+	EndGlobalSection
+EndGlobal
