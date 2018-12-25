@@ -1,12 +1,69 @@
 ﻿<Window x:Class="Object_Formatter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Object_Formatter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="577.479" Width="800">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="15,15,15,0">
+            <Label Content="Objects Paramters" HorizontalAlignment="Center"  FontSize="18"></Label>
+            <ListBox SelectionMode="Multiple"
+                     x:Name="FirstList" BorderBrush="AliceBlue"
+                     Background="White"  ItemsSource="{Binding NamesList}" Margin="15" Height="196">
+
+            </ListBox>
+        </StackPanel>
+
+        <StackPanel Margin="15,62,15,26" Grid.Column="1"   >
+            <Button Background="Gray" Content="&gt;&gt;" FontSize="25"
+                Height="60"  Click="MoveElement"
+                Margin="15"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                />
+            <Button Content="Formate Sent String" Background="Gray" Height="50" Margin="15" 
+                    VerticalAlignment="Bottom" Click="Formate_Sent_String"/>
+        </StackPanel>
+
+        <StackPanel Margin="15,15,15,26" Grid.Column="2" >
+            <Label Content="Selected Objects" HorizontalAlignment="Center" FontSize="18"></Label>
+            <ListBox  x:Name="SecondList"  Margin="15" Height="256">
+            </ListBox>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0">Sent string</Label>
+            <Button Grid.Column="1" Grid.ColumnSpan="1" Click="Sent_To_Device">Send To Device"</Button>
+            <TextBox Grid.Row="1" x:Name="Sent" Background="White" Margin="6"  Grid.ColumnSpan="2"></TextBox>
+            <Label Grid.Row="2">The Incoming String From the Device</Label>
+            <TextBox Grid.Row="1" Grid.RowSpan="3" x:Name="Incomming" Margin="5,0,5,10" Background="White"  Grid.ColumnSpan="2"></TextBox>
+        </Grid>
+
     </Grid>
 </Window>
+
