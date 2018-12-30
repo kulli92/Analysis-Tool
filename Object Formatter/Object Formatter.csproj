@@ -64,6 +64,7 @@
     <Compile Include="DictonaryImporter.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParameterObject.cs" />
+    <Compile Include="PVM.cs" />
     <Compile Include="Serial Communication Tunnel .cs" />
     <Compile Include="VM.cs" />
     <Page Include="MainWindow.xaml">

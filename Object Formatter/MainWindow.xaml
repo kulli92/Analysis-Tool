@@ -1,16 +1,18 @@
 ﻿<Window x:Class="Object_Formatter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Object_Formatter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="577.479" Width="800">
+        Title="Parameter String Formatter" Height="750" Width="800">
+
     <Grid Background="LightGray">
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition ></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,35 +21,36 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="15,15,15,0">
-            <Label Content="Objects Paramters" HorizontalAlignment="Center"  FontSize="18"></Label>
+            <Label Content="Objects &amp; Paramters" HorizontalAlignment="Center"  FontSize="18"></Label>
             <ListBox SelectionMode="Multiple"
                      x:Name="FirstList" BorderBrush="AliceBlue"
-                     Background="White"  ItemsSource="{Binding NamesList}" Margin="15" Height="196">
-
+                     Background="White"  ItemsSource="{Binding NamesList}" Margin="15" Height="256" >
+            </ListBox>
+            <ListBox SelectionMode="Multiple"
+                     x:Name="AlterFirstList" BorderBrush="AliceBlue" Visibility="Collapsed"
+                     Background="White"  ItemsSource="{Binding ParamNamesList}" Margin="15" Height="256" >
             </ListBox>
         </StackPanel>
 
         <StackPanel Margin="15,62,15,26" Grid.Column="1"   >
-            <Button Background="Gray" Content="&gt;&gt;" FontSize="25"
+            <Button Background="Gray" Content="&gt;&gt;" FontSize="25" Style="{DynamicResource RoundCorner}"
                 Height="60"  Click="MoveElement"
                 Margin="15"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 />
-            <Button Content="Formate Sent String" Background="Gray" Height="50" Margin="15" 
+            <Button Content="Formate String" Background="Gray" Height="50" Margin="15" Style="{DynamicResource RoundCorner}"
                     VerticalAlignment="Bottom" Click="Formate_Sent_String"/>
+            <Button Content="Parameter View" Background="Gray" Height="60" Margin="15" Click="Change_View" Style="{DynamicResource RoundCorner}"> </Button>
         </StackPanel>
 
         <StackPanel Margin="15,15,15,26" Grid.Column="2" >
-            <Label Content="Selected Objects" HorizontalAlignment="Center" FontSize="18"></Label>
+            <Label Content="Selected Objects &amp; Parameters" HorizontalAlignment="Center" FontSize="18"></Label>
             <ListBox  x:Name="SecondList"  Margin="15" Height="256">
             </ListBox>
         </StackPanel>
-
-
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -56,12 +59,29 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <ComboBox x:Name="AvailableCOM" ItemsSource="{Binding AvailableCOM}" Margin="5"  DropDownOpened="AvailableCOM_DropDownOpened"></ComboBox>
+            <Button x:Name="OpenPort" Grid.Column="1" Margin="4" Content="Open Port" Style="{DynamicResource RoundCorner}" Click="OpenPort_Click"></Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0">Sent string</Label>
-            <Button Grid.Column="1" Grid.ColumnSpan="1" Click="Sent_To_Device">Send To Device"</Button>
+            <Button Grid.Column="1" Width="300" Grid.ColumnSpan="1" Click="Sent_To_Device" Style="{DynamicResource RoundCorner}">Send To Device"</Button>
             <TextBox Grid.Row="1" x:Name="Sent" Background="White" Margin="6"  Grid.ColumnSpan="2"></TextBox>
             <Label Grid.Row="2">The Incoming String From the Device</Label>
-            <TextBox Grid.Row="1" Grid.RowSpan="3" x:Name="Incomming" Margin="5,0,5,10" Background="White"  Grid.ColumnSpan="2"></TextBox>
+            <Border Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2" CornerRadius="3" BorderBrush="CadetBlue" Margin="5,0,5,10" BorderThickness="2">
+                <TextBox x:Name="Incomming" Background="White"  Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Visible" BorderThickness="0"></TextBox>
+            </Border>
         </Grid>
 
     </Grid>
