@@ -23,7 +23,7 @@ namespace Object_Formatter
         public static void ParameterDicInitilizer()
         {
             DictionaryHasBeenInitilized = true;
-            var package = new ExcelPackage(new FileInfo(@"C:\Users\Aklli\source\repos\Object Formatter\Object Formatter\bin\Debug\Parameters Dictionary Reordered.xlsx"));
+            var package = new ExcelPackage(new FileInfo(@"C:\Users\Aklli\Desktop\ParamsDic08082018.xlsx"));
             ExcelWorksheet sheet = package.Workbook.Worksheets[1];
             for (int i = 1; i < 419; i++)
             {
@@ -31,30 +31,31 @@ namespace Object_Formatter
                 new Parameter()
                 {
                     ParamName = sheet.Cells["B" + i].Value.ToString(),
-                    Index = Convert.ToInt16(sheet.Cells["G" + i].Value.ToString()),
-                    MemoryAddress = sheet.Cells["F" + i].Value.ToString(),
-                    Value = ""
+                    Value = sheet.Cells["D" + i].Value.ToString(),
+                    MemoryAddress = sheet.Cells["C" + i].Value.ToString(),
+                    MinValue = sheet.Cells["E" + i].Value.ToString(),
+                    MaxValue = sheet.Cells["F" + i].Value.ToString(),
                 });
-              /*  ParamObjectRelatedDic.Add(sheet.Cells["A" + i].Value.ToString(),
+                ParamObjectRelatedDic.Add(sheet.Cells["A" + i].Value.ToString(),
                 new Parameter()
                 {
                     ParamName = sheet.Cells["B" + i].Value.ToString(),
-                    Index = Convert.ToInt16(sheet.Cells["G" + i].Value.ToString()),
+
                     MemoryAddress = sheet.Cells["F" + i].Value.ToString(),
-                    MinValue = sheet.Cells["C" + i].Value.ToString(),
-                    MaxValue = sheet.Cells["D" + i].Value.ToString(),
-                });*/
+                    // MinValue = sheet.Cells["C" + i].Value.ToString(),
+                    // MaxValue = sheet.Cells["D" + i].Value.ToString(),
+                });
             }
-            var package2 = new ExcelPackage(new FileInfo(@"C:\Users\Aklli\source\repos\Object Formatter\Object Formatter\bin\Debug\Object Dictionary.xlsx"));
-            ExcelWorksheet sheet2 = package2.Workbook.Worksheets[1];
-            for (int i = 2; i < 33; i++)
+            //var package2 = new ExcelPackage(new FileInfo(@"C:\Users\Aklli\Desktop\Object Dic.xlsx"));
+            ExcelWorksheet sheet2 = package.Workbook.Worksheets[2];
+            for (int i = 1; i < 21; i++)
             {
                 ObjectDic.Add(sheet2.Cells["A" + i].Value.ToString(),
                 new ParameterObject()
                 {
                     Name = sheet2.Cells["B" + i].Value.ToString(),
                     MemoryAddress = sheet2.Cells["C" + i].Value.ToString(),
-                    ContainedParams = sheet2.Cells["H" + i].Value.ToString()
+                    Value = sheet2.Cells["D" + i].Value.ToString()
                 });
             }
         }
@@ -327,7 +328,7 @@ namespace Object_Formatter
                     }
                 }
 
-                ObjectDic[item[0] + "" + item[1]].ContainedParams = "emptu";
+                ObjectDic[item[0] + "" + item[1]].Value = "emptu";
                 FinalListOfObjects.Add(ObjectDic[item[0] + "" + item[1]]);
 
             }

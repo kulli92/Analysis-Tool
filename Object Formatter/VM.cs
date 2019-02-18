@@ -17,6 +17,7 @@ namespace Object_Formatter
         public static ObservableCollection<string> ConfigurationList { get; set; } = new ObservableCollection<string>() { };
         public static ObservableCollection<string> ParamConfigurationList { get; set; } = new ObservableCollection<string>() { };
         public ObservableCollection<string> AvailableCOM { get; set; } = new ObservableCollection<string> { };
+
         public VM()
         {
             RowDictionary = DictonaryImporter.RowObjectDictionaryProvider();
@@ -30,9 +31,7 @@ namespace Object_Formatter
             {
                 ParamNamesList.Add(item.Value.ParamName);
             }
-          
         }
-
         public  void ScanPorts()
         {
             AvailableCOM.Clear();
@@ -41,8 +40,6 @@ namespace Object_Formatter
                 AvailableCOM.Add(item);
             }
         }
-
-
         //----------------------------------
         public static string SentStringGenerator()
         {
@@ -50,7 +47,7 @@ namespace Object_Formatter
          
             foreach (var item in ConfigurationList)
             {
-                var MyValue = RowDictionary.First(x => x.Value.Name == item).Value.ContainedParams;
+                var MyValue = RowDictionary.First(x => x.Value.Name == item).Value.Value;
                 ObjectString += MyValue.ToString();
                 if (ConfigurationList.IndexOf(item) == ConfigurationList.Count - 1 && VM.ParamConfigurationList.Count ==0)
                 {
@@ -61,7 +58,6 @@ namespace Object_Formatter
             };
             return  ObjectString;
         }
-
         //------------------------------------------
         public static string ConfigurationStringGenerator()
         {

@@ -27,7 +27,6 @@ namespace Object_Formatter
             DataContext = ViewModel;
         }
         public VM ViewModel { get; set; } = new VM();
-     
         public Serial_Communication_Tunnel SerialPort { get; set; } = new Serial_Communication_Tunnel();
         string RequestString = "";
         public static ObservableCollection<string> TempList { get; set; } = new ObservableCollection<string>() { };
@@ -66,7 +65,7 @@ namespace Object_Formatter
         //Send the string and recieve the response
         private void Sent_To_Device(object sender, RoutedEventArgs e)
         {
-            SerialPort.ToDevice();
+            SerialPort.ToDevice(Sent.Text,1,1);
             Incomming.Text = Serial_Communication_Tunnel.StaticResponseString;
         }
 

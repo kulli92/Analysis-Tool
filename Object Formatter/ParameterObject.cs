@@ -10,6 +10,7 @@ namespace Object_Formatter
     {
         public string Name { get; set; }
         public string MemoryAddress { get; set; }
-        public string ContainedParams { get; set; } = "EM<>";
+        public string Value { get; set; }
+       // public string ContainedParams { get; set; }
     }
 }
